@@ -7,22 +7,24 @@ hownet_dict = OpenHowNet.HowNetDict()
 import nltk
 from nltk.corpus import wordnet
 
-# def get_lexnames(word):
-
+def get_lexnames(word):
+    lexnames = set()
+    for synset in wordnet.synsets(word):
+        lexnames.add(synset.lexname())
+    print(lexnames)
 
 
 def get_sememes(word):
-    sememes = hownet_dict.get_sememes_by_word(word, display='list', merge=False, expanded_layer=-1)
-    # print(sememes)
+    sememes = hownet_dict.get_sememes_by_word(word, display='list', merge=True, expanded_layer=-1)
+    print(sememes)
     all_sememes = []
-    for sememe in sememes[0]["sememes"]:
+    for sememe in sememes:
         print(sememe)
         all_sememes.append(str(sememe).split("|")[0])
     print(all_sememes)
 
 
-
-# def get_root_affixes(word):
+def get_root_affixes(word):
 
 
 # one layer down dog -> husky, lab, poodle etc.
@@ -55,8 +57,9 @@ def get_synonyms(word):
     print(syns)
 
 
-word = "sodomize"
+word = "excess"
 get_synonyms(word)
 get_hypernyms(word)
 get_hyponyms(word)
 get_sememes(word)
+get_lexnames(word)
