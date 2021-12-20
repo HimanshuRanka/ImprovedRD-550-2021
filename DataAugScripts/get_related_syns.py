@@ -68,7 +68,8 @@ def get_description_similarity_score(word, definition, embed):
 def main():
     print("setting up model")
     print(tf.__version__)
-
+    # run the following command in the DataAugScripts directory to download the USE model
+    # wget -qO- "https://tfhub.dev/google/universal-sentence-encoder/4?tf-hub-format=compressed" | tar -zxvC \new_encoder_model
     time = datetime.datetime.now()
     embed = hub.load("./new_encoder_model")
     print(datetime.datetime.now() - time)
