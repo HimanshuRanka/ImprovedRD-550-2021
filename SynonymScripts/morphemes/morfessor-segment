@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 ### TAKEN DIRECTLY FROM: https://github.com/aalto-speech/morfessor ###
 
+# Run the following command to use: python .\morfessor-segment -l model.bin testwords.txt -o word_root_affix.txt
+
 import argparse
 import sys
 
