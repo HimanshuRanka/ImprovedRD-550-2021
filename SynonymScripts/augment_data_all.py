@@ -6,6 +6,8 @@ import OpenHowNet
 hownet_dict = OpenHowNet.HowNetDict()
 import nltk
 from nltk.corpus import wordnet
+import morfessor
+
 
 def get_lexnames(word):
     lexnames = set()
@@ -23,8 +25,15 @@ def get_sememes(word):
         all_sememes.append(str(sememe).split("|")[0])
     print(all_sememes)
 
+def get_morphemes_model(path):
+    io = morfessor.MorfessorIO(encoding="UTF-8",
+                     compound_separator=r'\s+',
+                     atom_separator=None,
+                     lowercase=False)
+    return io.read_binary_model_file(path)
 
-def get_root_affixes(word):
+def get_morphemes(model, word, viterbiSmooth=0, viterbiMaxLen=30):
+    print(model.viterbi_segment(word, viterbiSmooth, viterbiMaxLen)[0])
 
 
 # one layer down dog -> husky, lab, poodle etc.
@@ -56,10 +65,11 @@ def get_synonyms(word):
             syns.add(lemma.name())
     print(syns)
 
-
+model = get_morphemes_model("./morphemes/model.bin")
 word = "excess"
 get_synonyms(word)
 get_hypernyms(word)
 get_hyponyms(word)
 get_sememes(word)
 get_lexnames(word)
+get_morphemes(model, word)
