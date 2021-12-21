@@ -1,5 +1,5 @@
 # Improved Weighted Reverse Dictionary
-
+Kevin, Himanshu, Bonnie
 ## Requirements
 * Python 3.x
 * Pytorch 1.x
@@ -7,8 +7,8 @@
 * torch.cuda.is_available()
 
 ## Data
-* Data for section 3.1 and 3.2: download the English Reverse Dictionary data from the MultiRD paper from [Google Drive](https://drive.google.com/drive/folders/1jeyPE8iGdGUSVJe_6Smr_NzoWfR52f4g?usp=sharing)
-* Data for section 3.3: For data augmentation process for our data, see ./DataAugScripts/ and ./SynonymScripts/. We are hosting the data at 
+* Data for paper section 3.1 and 3.2: download the English Reverse Dictionary data from the MultiRD paper from [Google Drive](https://drive.google.com/drive/folders/1jeyPE8iGdGUSVJe_6Smr_NzoWfR52f4g?usp=sharing)
+* Data for paper section 3.3: For data augmentation process for our data, see ./DataAugScripts/ and ./SynonymScripts/. We are hosting the data at 
 [Google Drive](https://drive.google.com/file/d/1-irISSNJ8MdgOy2H3m2UNdtgnNUXEZYt/view?usp=sharing)
 
 put unzipped `data/` in this directory ./
@@ -47,7 +47,7 @@ python main.py -e 15 -v -dr ../runs/cm/ -m m -ls ce
 python evaluate_result.py -m runs/cm/m
 
 ```
-To run freezing, modify the start_step parameter in codec/model (default 20000)
+To run freezing/no freezing, modify the start_step parameter in codec/model (default 20000)
 
 For section 3.3, run the BiLSTM baseline on both data from MultiRD and our data. 
 
