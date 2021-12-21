@@ -56,6 +56,6 @@ For data augmentation process for our data, see ./DataAugScripts/ and ./SynonymS
 ## Reference
 Zhang et al, Multi-channel Reverse Dictionary Model 2019. 
 [Paper](https://arxiv.org/abs/1912.08441) 
-[Repo] (https://github.com/thunlp/MultiRD)
+[Repo](https://github.com/thunlp/MultiRD)
 
 ### Thank you and happy holidays 🎅
