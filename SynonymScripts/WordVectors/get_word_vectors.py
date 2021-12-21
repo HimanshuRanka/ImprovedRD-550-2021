@@ -4,15 +4,20 @@ import os.path as osp
 
 model = api.load("word2vec-google-news-300")
 
-words = json.load(open(osp.join("..", "..", "new_words.json"), "r"))
+with open(osp.join("..", "..", "syn_target_words.txt"), "r") as w_files:
+    words = w_files.read().splitlines()
+
 vecs = {}
 removals = []
 for word in words:
     print(f'on word {word}')
-    try:
-        vecs[word] = model[word.replace(" ", "_")].tolist()
-    except:
+    if ' ' in word:
         removals.append(word)
+    else:
+        try:
+            vecs[word] = model[word].tolist()
+        except:
+            removals.append(word)
 
 print(len(vecs))
 print(len(removals))

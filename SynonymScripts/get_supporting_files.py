@@ -1,7 +1,7 @@
 import json
 import os.path as osp
 
-data = json.load(open(osp.join("..", "data", "data_all_exp_clean.json"), "r", encoding='utf-8'))
+data = json.load(open(osp.join("..", "data", "data_syn_aug_clean.json"), "r", encoding='utf-8'))
 
 lexnames = set()
 print(data[:2])
@@ -22,12 +22,21 @@ root_affixes = set()
 root_affix_freq = {}
 print(data[:2])
 for pair in data:
-    for part in pair["root_affix"]:
-        root_affixes.add(part)
-        if part in root_affix_freq:
-            root_affix_freq[part] += 1
+    for idx, part in enumerate(pair["root_affix"]):
+        # gets rid of spaces
+        if part == " ":
+            print("found space")
+            del pair["root_affix"][idx]
+            try:
+                print(pair["root_affix"][idx])
+            except:
+                print("succes in removing space")
         else:
-            root_affix_freq[part] = 1
+            root_affixes.add(part)
+            if part in root_affix_freq:
+                root_affix_freq[part] += 1
+            else:
+                root_affix_freq[part] = 1
 
 root_affixes = list(root_affixes)
 print(len(root_affixes))
