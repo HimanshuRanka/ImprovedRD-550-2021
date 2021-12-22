@@ -20,38 +20,42 @@ put unzipped `data/` in this directory ./
 
 ## Run
 
-For section 3.2 and results in table 1:
+For section 3.1 and results in table 1:
 
 ```
 cd code
 # run BiLSTM baseline
 python main.py -e 15 -v -dr ../runs/mc/
-python evaluate_result.py -m runs/mc/b
 
 # run Multi Channel baseline
 python main.py -e 15 -v -m rsl -dr ../runs/mc/
-python evaluate_result.py -m runs/mc/rsl
 
 # run Learning Channels
 python main.py -e 15 -v -lc -dr ../runs/v1/
+
+cd ..
+python evaluate_result.py -m runs/mc/b
+python evaluate_result.py -m runs/mc/rsl
 python evaluate_result.py -m runs/v1/b
 
 ```
 
-For section 3.1 and results in table 2 and 3:
+For section 3.2 and results in table 2 and 3:
 
 ```
 cd codec
 # contrastive joint
 python main.py -e 15 -v -dr ../runs/cb/ -m b -ls ce
-python evaluate_result.py -m runs/cb/b
 
 # contrastive one end
 python main.py -e 15 -v -dr ../runs/cf/ -m f -ls ce
-python evaluate_result.py -m runs/cf/f
 
 # contrastive momentum
 python main.py -e 15 -v -dr ../runs/cm/ -m m -ls ce
+
+cd ..
+python evaluate_result.py -m runs/cb/b
+python evaluate_result.py -m runs/cf/f
 python evaluate_result.py -m runs/cm/m
 
 ```
